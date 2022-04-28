@@ -100,11 +100,11 @@ export default async function execute(interaction, { config, createEmbed }) {
 		special.push(localizer._("Mythic Pokémon"));
 	special = special.join("\n");
 
-	const flavorText = removeLineBreaks(data.flavor_text_entries.find(i => i.language.name == config.locale.toLowerCase()).flavor_text);
-	const name = data.names.find(i => i.language.name == config.locale.toLowerCase()).name;
+	const flavorText = removeLineBreaks(data.flavor_text_entries.find(i => i.language.name == config.lang.toLowerCase()).flavor_text);
+	const name = data.names.find(i => i.language.name == config.lang.toLowerCase()).name;
 	const id = data.id;
 	const generation = data.generation.name.split("-")[1].toUpperCase();
-	const category = data.genera.find(i => i.language.name == config.locale.toLowerCase()).genus;
+	const category = data.genera.find(i => i.language.name == config.lang.toLowerCase()).genus;
 	const image = data2.sprites.other["official-artwork"].front_default;
 	const height = `${data2.height * 10} cm\n${toFeet(data2.height * 10)}`;
 	const weight = `${data2.weight / 10} kg\n${Math.round(data2.weight / 10 * 2.205 * 10) / 10} lb`;
@@ -128,7 +128,7 @@ export default async function execute(interaction, { config, createEmbed }) {
 	if (data.evolves_from_species) {
 		const response3 = await axios.get(data.evolves_from_species.url);
 		const data3 = response3.data;
-		const evolvesFromName = data3.names.find(i => i.language.name == config.locale).name;
+		const evolvesFromName = data3.names.find(i => i.language.name == config.lang).name;
 		embed.addField(localizer._("Evolves from"), evolvesFromName, true);
 	};
 
