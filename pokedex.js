@@ -23,7 +23,7 @@ function toFeet(n) {
 	var feet = Math.floor(realFeet);
 	var inches = Math.round((realFeet - feet) * 12);
 	return `${feet}'${inches}"`;
-};
+}
 
 /**
  * Remove line breaks from a string
@@ -34,7 +34,7 @@ function toFeet(n) {
 function removeLineBreaks(str) {
 	// There is also an invisible character in there (U+000c)
 	return str.replace(/(\r\n|\n|\r|)/gm, " ");
-};
+}
 
 /**
  * Main command for the pokedex
@@ -114,23 +114,25 @@ export default async function execute(interaction, { config, createEmbed }) {
 		.setTitle("Pokédex")
 		.setDescription(`**${name}** - #${id}\n${category}\n${flavorText}`)
 		.setImage(image)
-		.addField(localizer._("Type(s)"), types, true)
-		.addField(localizer._("Height"), height, true)
-		.addField(localizer._("Weight"), weight, true)
-		.addField(localizer._("Generation"), generation, true)
-		.addField(localizer._("Forms"), forms, true)
-		.addField(localizer._("Abilities"), abilities, true);
+		.addFields(
+			{ name: localizer._("Type(s)"), value: types, inline: true },
+			{ name: localizer._("Height"), value: height, inline: true },
+			{ name: localizer._("Weight"), value: weight, inline: true },
+			{ name: localizer._("Generation"), value: generation, inline: true },
+			{ name: localizer._("Forms"), value: forms, inline: true },
+			{ name: localizer._("Abilities"), value: abilities, inline: true }
+		);
 
 	if (special) {
-		embed.addField(localizer._("Special attribute"), special, true);
-	};
+		embed.addFields({ name: localizer._("Special attribute"), value: special, inline: true });
+	}
 
 	if (data.evolves_from_species) {
 		const response3 = await axios.get(data.evolves_from_species.url);
 		const data3 = response3.data;
 		const evolvesFromName = data3.names.find(i => i.language.name == config.lang).name;
-		embed.addField(localizer._("Evolves from"), evolvesFromName, true);
-	};
+		embed.addFields({ name: localizer._("Evolves from"), value: evolvesFromName, inline: true });
+	}
 
 	await message.edit({
 		embeds: [embed]

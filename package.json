@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/GoudronViande24/artibot-pokedex#readme",
   "dependencies": {
-    "artibot": "^3.0.3"
+    "artibot": "^4.0.0"
   }
 }
