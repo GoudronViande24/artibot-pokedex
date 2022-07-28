@@ -1,6 +1,6 @@
 {
   "name": "artibot-pokedex",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Pokedex extension for Artibot",
   "main": "index.js",
   "type": "module",
