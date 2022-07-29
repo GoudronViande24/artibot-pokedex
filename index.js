@@ -25,6 +25,8 @@ export default ({ config: { lang } }) => {
 		id: "pokedex",
 		name: "Pokedex",
 		version,
+		repo: "GoudronViande24/artibot-pokedex",
+		packageName: "artibot-pokedex",
 		langs: ["en", "fr"],
 		parts: [
 			new SlashCommand({
