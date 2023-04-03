@@ -10,15 +10,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const require = createRequire(import.meta.url);
-const { version } = require('./package.json');
+const { version } = require('../package.json');
 
 /**
  * Pokedex slash command extension for Artibot
  * @author GoudronViande24
- * @param {Artibot} artibot
- * @returns {Module}
  */
-export default ({ config: { lang } }) => {
+export default ({ config: { lang } }: Artibot): Module => {
 	localizer.setLocale(lang);
 
 	return new Module({
@@ -47,5 +45,5 @@ export default ({ config: { lang } }) => {
 }
 
 export const localizer = new Localizer({
-	filePath: path.join(__dirname, "locales.json")
+	filePath: path.join(__dirname, "../locales.json")
 });

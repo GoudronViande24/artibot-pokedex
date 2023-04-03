@@ -1,11 +1,19 @@
 {
   "name": "artibot-pokedex",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Pokedex extension for Artibot",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "locales.json",
+    "LICENSE"
+  ],
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +35,9 @@
   },
   "homepage": "https://github.com/GoudronViande24/artibot-pokedex#readme",
   "dependencies": {
-    "artibot": "^4.0.0"
+    "artibot": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.3"
   }
 }
